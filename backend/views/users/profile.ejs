@@ -1,0 +1,11 @@
+<%- include('partials/head', { title: 'Product' }) %>
+<%- include('partials/header') %>
+
+<main>
+  <h2><%= product.name %></h2>
+  <img src="<%= product.image %>" alt="<%= product.name %>">
+  <p><%= product.description %></p>
+  <p>Price: $<%= product.price %></p>
+</main>
+
+<%- include('partials/footer') %>

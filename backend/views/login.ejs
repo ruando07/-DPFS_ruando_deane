@@ -1,0 +1,15 @@
+<%- include('partials/head', { title: 'Login' }) %>
+<%- include('partials/header') %>
+<main>
+  <h2>Login</h2>
+  <form action="/api/users/login" method="POST">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <button type="submit">Login</button>
+  </form>
+</main>
+<%- include('partials/footer') %>
+</body>
+</html>
