@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Materiales Vásquez</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/responsive.css">
+</head>
+<body>
+    <header>
+        <h1>Materiales Vásquez</h1>
+        <nav>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Welcome to Materiales Vásquez</h2>
+        <section class="featured-products">
+            <h3>Featured Products</h3>
+            <div class="products-container">
+                <% products.forEach(product => { %>
+                    <div class="product-card">
+                        <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                        <h4><%= product.name %></h4>
+                        <p>$<%= product.price.toFixed(2) %></p>
+                        <a href="/products/<%= product.id %>" class="btn">View Details</a>
+                        <form action="/cart/add/<%= product.id %>" method="POST">
+                            <button type="submit" class="btn">Add to Cart</button>
+                        </form>
+                    </div>
+                <% }) %>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

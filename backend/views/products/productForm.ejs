@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/responsive.css">
+</head>
+<body>
+    <header>
+        <h1>Materiales Vásquez</h1>
+        <nav>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2><%= title %></h2>
+
+        <form action="<%= actionUrl %>" method="POST" enctype="multipart/form-data">
+            <div>
+                <label for="name">Product Name:</label>
+                <input type="text" id="name" name="name" value="<%= product.name || '' %>" required>
+            </div>
+
+            <div>
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="4" required><%= product.description || '' %></textarea>
+            </div>
+
+            <div>
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" step="0.01" value="<%= product.price || '' %>" required>
+            </div>
+
+            <div>
+                <label for="image">Image:</label>
+                <input type="file" id="image" name="image">
+                <% if (product.imageUrl) { %>
+                    <img src="<%= product.imageUrl %>" alt="Product Image" style="max-width: 200px; margin-top: 10px;">
+                <% } %>
+            </div>
+
+            <div>
+                <button type="submit"><%= submitButtonText %></button>
+            </div>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Materiales Vásquez</p>
+    </footer>
+</body>
+</html>

@@ -9,7 +9,7 @@ function Login() {
     e.preventDefault();
     axios.post('/auth/login', { email, password })
       .then(response => {
-        // Handle successful login
+        
         console.log('Login successful');
       })
       .catch(error => console.error('Login error:', error));

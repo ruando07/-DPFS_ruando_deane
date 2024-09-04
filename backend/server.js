@@ -8,36 +8,36 @@ require('dotenv').config();
 
 const productRoutes = require('./routes/productRoutes');
 const userRoutes = require('./routes/userRoutes');
-const sequelize = require('./config/db'); // Configuración de Sequelize
+const sequelize = require('./config/db'); 
 
 const app = express();
 const port = process.env.PORT || 3001;
 
-// Middlewares
-app.use(morgan('dev')); // Log requests to the console
-app.use(cors()); // Enable Cross-Origin Resource Sharing
-app.use(express.json()); // Parse JSON bodies
-app.use(express.urlencoded({ extended: false })); // Parse URL-encoded bodies
-app.use(cookieParser()); // Parse cookies
+
+app.use(morgan('dev')); 
+app.use(cors()); 
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: false })); 
+app.use(cookieParser());
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your_secret_key',
   resave: false,
   saveUninitialized: true,
 }));
 
-// Serve static files from the 'public' directory
+
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Routes
-app.use('/api/products', productRoutes); // Route for product-related endpoints
-app.use('/api/users', userRoutes); // Route for user-related endpoints
 
-// Route for the homepage or default route
+app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes); 
+
+
 app.get('/', (req, res) => {
   res.send('Welcome to the e-commerce API!');
 });
 
-// Connect to the database and start the server
+
 sequelize.sync()
   .then(() => {
     app.listen(port, () => {

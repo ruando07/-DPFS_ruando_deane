@@ -17,9 +17,9 @@ const Login = () => {
     axios.post('/api/users/login', formData)
     .then(response => {
       console.log('Login successful:', response.data);
-      // Save token in localStorage or cookie
+     
       localStorage.setItem('token', response.data.token);
-      // Redirect to home or cart
+      
     })
     .catch(error => {
       console.error('There was an error logging in!', error);

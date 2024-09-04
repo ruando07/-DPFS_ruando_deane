@@ -2,7 +2,6 @@ const User = require('.../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-// Register user
 exports.register = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -13,7 +12,7 @@ exports.register = async (req, res) => {
   }
 };
 
-// Login user
+
 exports.login = async (req, res) => {
   try {
     const user = await User.findOne({ where: { email: req.body.email } });
@@ -28,7 +27,7 @@ exports.login = async (req, res) => {
   }
 };
 
-// Get user by ID
+
 exports.getUserById = async (req, res) => {
   try {
     const user = await User.findByPk(req.params.id);

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Detail</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/responsive.css">
+</head>
+<body>
+    <header>
+        <h1>Materiales Vásquez</h1>
+        <nav>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Cart Detail</h2>
+
+        <% if (cartItems.length === 0) { %>
+            <p>Your cart is empty.</p>
+        <% } else { %>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% cartItems.forEach(item => { %>
+                        <tr>
+                            <td><%= item.productName %></td>
+                            <td><%= item.quantity %></td>
+                            <td>$<%= item.price.toFixed(2) %></td>
+                            <td>$<%= (item.quantity * item.price).toFixed(2) %></td>
+                            <td>
+                                <form action="/cart/remove/<%= item.productId %>" method="POST">
+                                    <button type="submit">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3">Total:</td>
+                        <td>$<%= cartTotal.toFixed(2) %></td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+
+            <div>
+                <form action="/checkout" method="POST">
+                    <button type="submit">Proceed to Checkout</button>
+                </form>
+            </div>
+        <% } %>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

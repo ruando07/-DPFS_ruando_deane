@@ -3,9 +3,9 @@ const { Sequelize } = require('sequelize');
 const sequelize = new Sequelize('ecommerce_db', 'ruando07', 'Ru@nd01997', {
     host: 'localhost',
     dialect: 'mysql',
-    port: 3306, // El puerto por defecto de MySQL es 3306
+    port: 3306, 
     define: {
-      timestamps: false // Desactiva las columnas createdAt y updatedAt por defecto
+      timestamps: false 
     }
   });
   sequelize.authenticate()

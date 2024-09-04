@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Cart = () => {
-  // This would normally be managed by state or context
-  const cartItems = []; // Example placeholder
+
+  const cartItems = []; 
 
   return (
     <div>

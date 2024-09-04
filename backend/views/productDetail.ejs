@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Detail - Materiales Vásquez</title>
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="/styles/responsive.css">
+</head>
+<body>
+    <header>
+        <h1>Materiales Vásquez</h1>
+        <nav>
+            <ul>
+                <li><a href="/home">Home</a></li>
+                <li><a href="/products">Products</a></li>
+                <li><a href="/cart">Cart</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="product-detail">
+            <h2><%= product.name %></h2>
+            <div class="product-info">
+                <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                <div class="product-details">
+                    <p><strong>Price:</strong> $<%= product.price.toFixed(2) %></p>
+                    <p><strong>Description:</strong> <%= product.description %></p>
+                    <form action="/cart/add/<%= product.id %>" method="POST">
+                        <button type="submit" class="btn">Add to Cart</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
