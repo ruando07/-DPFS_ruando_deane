@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <div>
-      <h2>Welcome to Our Store</h2>
+      <h2>Bienvenido a nuestra tienda online</h2>
       <div className="product-list">
         {products.map(product => (
           <ProductCard key={product.id} product={product} />

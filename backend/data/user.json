@@ -1,0 +1,21 @@
+[
+    {
+      "id": 1,
+      "firstName": "Juan",
+      "lastName": "Pérez",
+      "email": "juan.perez@example.com",
+      "password": "123456",
+      "category": "admin",
+      "image": "juan_perez.jpg"
+    },
+    {
+      "id": 2,
+      "firstName": "Ana",
+      "lastName": "García",
+      "email": "ana.garcia@example.com",
+      "password": "abcdef",
+      "category": "cliente",
+      "image": "ana_garcia.jpg"
+    }
+  ]
+  

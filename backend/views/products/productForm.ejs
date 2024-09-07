@@ -3,23 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/styles/main.css">
+    <title>Formulario de Productos<%= title %></title>
+    <link rel="stylesheet" href="/styles/styles.css">
     <link rel="stylesheet" href="/styles/responsive.css">
 </head>
 <body>
-    <header>
         <h1>Materiales Vásquez</h1>
-        <nav>
-            <ul>
-                <li><a href="/home">Home</a></li>
-                <li><a href="/products">Products</a></li>
-                <li><a href="/cart">Cart</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
-            </ul>
-        </nav>
-    </header>
+        <%- include('../partials/header') %>
 
     <main>
         <h2><%= title %></h2>

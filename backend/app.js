@@ -27,7 +27,7 @@ app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
 
 
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/server.js')));
 
 
 sequelize.sync().then(() => {

@@ -1,0 +1,14 @@
+<%- include('../partials/head') %>
+<body>
+    <%- include('../partials/header') %>
+    <h2>Listado de Productos</h2>
+    <ul>
+        <% products.forEach(product => { %>
+            <li>
+                <a href="/products/<%= product.id %>"><%= product.name %></a> - <%= product.price %>$
+            </li>
+        <% }); %>
+    </ul>
+    <%- include('../partials/footer') %>
+</body>
+</html>

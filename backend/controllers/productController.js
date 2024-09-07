@@ -1,68 +1,67 @@
-
-const Product = require('../models/product');
-
-
-exports.createProduct = async (req, res) => {
-  try {
-    const { name, description, image } = req.body;
-    const product = await Product.create({ name, description, image });
-    res.status(201).json(product);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+const fs = require('fs');
+const path = require('path');
+const productsFilePath = path.join(__dirname, '../data/products.json');
+let products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 
-exports.getAllProducts = async (req, res) => {
-  try {
-    const products = await Product.findAll();
-    res.status(200).json(products);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+const productsController = {
+    list: (req, res) => {
+        res.render('products/productList', { products });
+    },
+
+   
+    createForm: (req, res) => {
+        res.render('products/createProduct');
+    },
+
+    create: (req, res) => {
+        const newProduct = {
+            id: products.length + 1,
+            ...req.body
+        };
+        products.push(newProduct);
+        fs.writeFileSync(productsFilePath, JSON.stringify(products, null, 2));
+        res.redirect('/products');
+    },
 
 
-exports.getProductById = async (req, res) => {
-  try {
-    const product = await Product.findByPk(req.params.id);
-    if (!product) {
-      return res.status(404).json({ error: 'Product not found' });
+    detail: (req, res) => {
+        const product = products.find(p => p.id == req.params.id);
+        if (product) {
+            res.render('products/productDetail', { product });
+        } else {
+            res.status(404).send('Producto no encontrado');
+        }
+    },
+
+
+    editForm: (req, res) => {
+        const product = products.find(p => p.id == req.params.id);
+        if (product) {
+            res.render('products/editProduct', { product });
+        } else {
+            res.status(404).send('Producto no encontrado');
+        }
+    },
+
+
+    update: (req, res) => {
+        const productIndex = products.findIndex(p => p.id == req.params.id);
+        if (productIndex !== -1) {
+            products[productIndex] = { id: req.params.id, ...req.body };
+            fs.writeFileSync(productsFilePath, JSON.stringify(products, null, 2));
+            res.redirect(`/products/${req.params.id}`);
+        } else {
+            res.status(404).send('Producto no encontrado');
+        }
+    },
+
+    
+    delete: (req, res) => {
+        products = products.filter(p => p.id != req.params.id);
+        fs.writeFileSync(productsFilePath, JSON.stringify(products, null, 2));
+        res.redirect('/products');
     }
-    res.status(200).json(product);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
 };
 
-
-exports.updateProduct = async (req, res) => {
-  try {
-    const { name, description, image } = req.body;
-    const product = await Product.findByPk(req.params.id);
-    if (!product) {
-      return res.status(404).json({ error: 'Product not found' });
-    }
-    product.name = name || product.name;
-    product.description = description || product.description;
-    product.image = image || product.image;
-    await product.save();
-    res.status(200).json(product);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
-
-
-exports.deleteProduct = async (req, res) => {
-  try {
-    const product = await Product.findByPk(req.params.id);
-    if (!product) {
-      return res.status(404).json({ error: 'Product not found' });
-    }
-    await product.destroy();
-    res.status(204).send();
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-};
+module.exports = productsController;

@@ -1,0 +1,81 @@
+[
+    {
+      "id": 1,
+      "name": "Columnas",
+      "description": "Una serie de columnas de concreto de alta calidad.",
+      "image": "Columnas.jpg",
+      "category": "Material",
+      
+      "price": 99.99
+    },
+    {
+      "id": 2,
+      "name": "Fuente grande de dos niveles",
+      "description": "Fuente de dos niveles con muñeco decorativo de concreto de alta calidad con sistema de agua",
+      "image": "Fuente.jpg",
+      "category": "Material",
+      "price": 199.99
+    },
+    {
+      "id": 3,
+      "name": "Fuente chica de dos niveles",
+      "description": "Fuente de concreto pequeña con dos niveles de platos y sistema de agua",
+      "image": "Fuente_pequeña.jpg",
+      "category": "Material",
+      
+      "price": 99.99
+    },
+    {
+      "id": 4,
+      "name": "Gallina decorativa",
+      "description": "Gallina decorativa de concreto confeccionada totalmente de concreto de alta calidad",
+      "image": "gallina.jpg",
+      "category": "Material",
+      
+      "price": 11.99
+    },
+    {
+      "id": 5,
+      "name": "Peerp decorativo",
+      "description": "Gallina decorativa de concreto confeccionada totalmente de concreto de alta calidad",
+      "image": "perro.jpg",
+      "category": "Material",
+      "price": 19.99
+    },
+    {
+      "id": 6,
+      "name": "Pote pequeño",
+      "description": "Pote pequeño para planta , decoratico y realizado en concreto artesanal",
+      "image": "pote_chico.jpg",
+      "category": "Material",
+      "price": 9.99
+    },
+    {
+      "id": 7,
+      "name": "Pote de copa",
+      "description": "Pote grande de estico copa realizado en concreto, Sin planta incluida",
+      "image": "Pote_copa.jpg",
+      "category": "Material",
+      
+      "price": 29.99
+    },
+    {
+      "id": 8,
+      "name": "Pote de copa con planta",
+      "description": "Pote de copa con planta incluida, la planta de es alta calidad y resistencia",
+      "image": "Pote_planta.jpg",
+      "category": "Material",
+      
+      "price": 39.99
+    },
+    {
+      "id": 9,
+      "name": "Juego de mesa y bancas",
+      "description": "Juego de mesa redonda con 3 balcas semicirculares realizado en concreto",
+      "image": "Juego de mesa.jpg",
+      "category": "Material",
+      
+      "price": 299.99
+    }
+  ]
+  
